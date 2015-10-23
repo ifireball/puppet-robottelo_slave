@@ -1,0 +1,20 @@
+{
+  "name": "SatelliteQE-robottelo_slave",
+  "version": "0.0.1",
+  "author": "SatelliteQE",
+  "summary": "Configure a Robottelo Slave for use with Jenkins",
+  "license": "GPL-3.0+",
+  "source": "https://github.com/SatelliteQE/puppet-robottelo_slave.git",
+  "project_page": "https://github.com/SatelliteQE/puppet-robottelo_slave",
+  "issues_url": "https://github.com/SatelliteQE/puppet-robottelo_slave/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
+    },
+    {
+      "name": "puppetlabs/git",
+      "version_requirement": ">= 0.4.0 < 1.0.0"
+    }
+  ]
+}
