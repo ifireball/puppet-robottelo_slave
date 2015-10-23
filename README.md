@@ -1,0 +1,1 @@
+# puppet-robottelo_slave
