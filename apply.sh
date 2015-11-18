@@ -1,10 +1,8 @@
 #!/bin/bash -xe
 
-gem list | grep librarian-puppet
-librarian_installed=$?
-
-if [[ $librarian_installed == 1 ]]; then
-  gem install librarian-puppet
+list=`gem list`
+if ! echo "${list[@]}" | fgrep --word-regexp "librarian-puppet"; then
+    gem install librarian-puppet
 fi
 
 rm -rf modules
