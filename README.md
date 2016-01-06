@@ -5,6 +5,7 @@
     * [What robottelo_slave affects](#what-robottelo_slave-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with robottelo_slave](#beginning-with-robottelo_slave)
+    * [Installing for Satellite builds](#installing-for-Satellite-builds)
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
@@ -34,6 +35,15 @@ This script will handle acquiring all the dependencies and then applying the pup
 git clone https://github.com/SatelliteQE/puppet-robottelo_slave.git
 cd puppet-robottelo_slave
 ./apply.sh
+```
+
+###Installing for Satellite builds
+
+To enable the slave box to be configured to perforem Satellite 6 builds (Which
+require connectivity to Brew) you can run the `apply.sh` script as follows:
+
+```
+./apply.sh --brew
 ```
 
 ##Development
