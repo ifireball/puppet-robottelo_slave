@@ -14,6 +14,6 @@ class robottelo_slave::brew {
     baseurl  => "${rh_mirror}/rel-eng/dist-git/rhel/\$releasever/",
     gpgcheck => 0,
     enabled  => 1,
-  } ->
-  Package['brewkoji']
+    before   => Package['koji', 'brewkoji'],
+  }
 }
