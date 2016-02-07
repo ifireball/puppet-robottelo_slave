@@ -6,4 +6,8 @@ class robottelo_slave::install {
     'python-virtualenv',
   ])
 
+  ensure_packages(['hammer_cli_katello'], {
+    'provider' => 'gem'
+  })
+
 }
