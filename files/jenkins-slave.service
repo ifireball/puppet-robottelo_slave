@@ -1,7 +1,7 @@
 [Unit]
 Description=Jenkins slave service
 Requires=network.target
-After=multi-user.target
+After=network.target
 
 [Service]
 Type=simple
