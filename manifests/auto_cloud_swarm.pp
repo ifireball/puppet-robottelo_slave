@@ -28,7 +28,10 @@ class robottelo_slave::auto_cloud_swarm(
   }
 
   ensure_resource('group', $slave_user, { 'ensure' => 'present' })
-  ensure_resource('user', $slave_user, { 'ensure' => 'present' })
+  ensure_resource('user', $slave_user, {
+    'ensure' => 'present',
+    'system' => true,
+  })
   User<| title == $slave_user |> {
     managehome => true,
     gid        => $slave_user,
