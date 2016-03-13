@@ -12,6 +12,11 @@ have_executable() {
     which "$exe_name" &> /dev/null
 }
 
+join() {
+    local sep="${1:?}"
+    shift && echo -n "$1" && shift && printf "${sep}%s" "$@"
+}
+
 ensure_puppet() {
     if ! have_executable puppet; then
         # Attempt to install puppet if it is not installed, that will hopefully also
@@ -95,11 +100,11 @@ $NOOP ensure_puppet
 
 list=`gem list`
 if ! echo "${list[@]}" | fgrep --word-regexp "librarian-puppet"; then
-    $NOOP gem install librarian-puppet
+    $NOOP gem install --no-{ri,rdoc} librarian-puppet
 fi
 
 rm -rf modules
-$NOOP librarian-puppet install --path modules/
+$NOOP /usr/local/bin/librarian-puppet install --path modules/ --verbose
 
 $NOOP pushd modules
 $NOOP ln -s ../ robottelo_slave
@@ -107,6 +112,6 @@ $NOOP popd
 rm -rf .tmp
 
 $NOOP sudo puppet apply \
-    -e "class { '$PUPPET_CLASS': $(printf '%s, ' "${PUPPET_PARAMS[@]}") }" \
+    -e "class { '$PUPPET_CLASS': $(join ', ' "${PUPPET_PARAMS[@]}") }" \
     --modulepath modules/ \
     --verbose
