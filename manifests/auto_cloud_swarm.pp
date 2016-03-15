@@ -67,5 +67,10 @@ class robottelo_slave::auto_cloud_swarm(
         mode    => '0700';
     } ~>
     Service['jenkins-slave']
+    include ::selinux
+    $msgfiles = "puppet:///modules/${module_name}/selinux"
+    selinux::audit2allow { 'jenkins-slave':
+      source => "${msgfiles}/jenkins-slave-libvirt.audit.messages",
+    }
   }
 }

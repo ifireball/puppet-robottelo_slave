@@ -1,0 +1,1 @@
+type=AVC msg=audit(1457991977.866:467): avc:  denied  { transition } for  pid=13455 comm="libvirtd" path="/usr/libexec/qemu-kvm" dev="vda1" ino=18863915 scontext=system_u:system_r:unconfined_service_t:s0 tcontext=system_u:system_r:svirt_tcg_t:s0:c330,c363 tclass=process
